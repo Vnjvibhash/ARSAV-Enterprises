@@ -38,9 +38,45 @@
 			href="images/general-elements/favicon/apple-touch-icon-114x114.png"
 		/>
 
-		<!-- Title
-	============================================= -->
+		<!-- Title ============================================= -->
 		<title>ARSAV Enterprises</title>
+
+		<style>
+			/* Style for the overlay background */
+			.overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.7);
+				z-index: 9999; /* Place it on top of everything */
+			}
+
+			/* Style for the popup container */
+			.popup {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 5px;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+				text-align: left;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 30%; /* Set the width to 30% of the viewport width */
+				z-index: 10000; /* Place it on top of the overlay */
+			}
+
+			/* Close button style */
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				cursor: pointer;
+			}
+		</style>
 	</head>
 
 	<body class="homepage">
@@ -101,7 +137,7 @@
 										><!-- .logo end -->
 										<a
 											class="btn btn-header small rounded colorful hover-dark position-right move-top"
-											href="#"
+											onclick="openContactForm()"
 											>Get Quote</a
 										>
 									</div>
@@ -118,6 +154,58 @@
 				<!-- #header-bar-1 end -->
 			</header>
 			<!-- #header end -->
+
+			<!-- The popup form -->
+			<div class="overlay" id="contactFormDiv">
+				<div class="popup">
+					<span class="close" onclick="closeContactForm()"
+						>&times;</span
+					>
+					<h2>Contact Us</h2>
+					<form
+						action=""
+						method="post"
+						id="contactForm"
+						name="contactForm"
+					>
+						<label for="name">Name:</label>
+						<input
+							type="text"
+							id="Name"
+							name="Name"
+							required
+						/><br /><br />
+
+						<label for="email">Email:</label>
+						<input
+							type="email"
+							id="Email"
+							name="Email"
+							required
+						/><br /><br />
+
+						<label for="email">Mobile:</label>
+						<input
+							type="phone"
+							id="Phone"
+							name="Phone"
+							size="10"
+							required
+						/><br /><br />
+
+						<label for="message">Message:</label><br />
+						<textarea
+							id="Message"
+							name="Message"
+							rows="4"
+							required
+						></textarea
+						><br /><br />
+
+						<input type="submit" value="Submit" />
+					</form>
+				</div>
+			</div>
 
 			<!-- Banner
 		============================================= -->
@@ -145,15 +233,19 @@
 									<div class="banner-center-box text-white">
 										<h1>
 											<span class="heading-300"
-												>We Care to Deliver</span
+												>We are Team</span
 											>
 											<br />
-											Adaptive Solutions
+											101 Found!
 										</h1>
 										<p class="description">
-											We care to deliver adaptive services
-											and solutions to our customers to
-											achieve and satisfy their needs.
+											Our core objective revolves around
+											facilitating business growth by
+											effectively bridging critical gaps.
+											Through our services, we establish
+											vital connections between businesses
+											and seasoned Financial Advisors and
+											Mentors.
 										</p>
 										<div
 											class="cta-subscribe cta-subscribe-1 box-form mt-40"
@@ -166,7 +258,10 @@
 												</div>
 												<!-- .cs-notifications end -->
 												<form
-													id="form-email-subscribe"
+													action=""
+													method="post"
+													name="contactForm2"
+													id="form-email-subscribe contactForm2"
 													class="form-inline redirected"
 												>
 													<div class="form-group">
@@ -175,10 +270,20 @@
 														></i>
 														<input
 															type="email"
-															name="esEmail"
+															name="subscribedEmail"
 															placeholder="Email Address"
-															id="esEmail"
+															id="subscribedEmail"
 															class="form-control"
+														/>
+														<input
+															type="text"
+															placeholder="Status"
+															name="Status"
+															id="Status"
+															value="subscribed"
+															style="
+																display: none;
+															"
 														/>
 													</div>
 													<!-- .form-group end -->
@@ -214,36 +319,37 @@
 			<!-- === Section Our Services 1 =========== -->
 			<div id="section-our-services-1" class="section-flat">
 				<div class="section-content">
+					<h3 style="width: 100%; text-align: center">
+						<span class="heading-300">What</span> We Deliver
+						<span class="heading-300">to Our Users</span>
+					</h3>
+					<br />
 					<div class="container">
 						<div class="row">
-							<div class="col-md-3 mt-30 mt-md-0 mb-md-40">
-								<h3>
-									<span class="heading-300">What</span>
-									<br />
-									We Deliver
-									<br />
-									<span class="heading-300"
-										>to Our Users</span
-									>
-								</h3>
-							</div>
-							<!-- .col-md-3 end -->
+							<!-- .col-md-3 -->
 							<div class="col-md-3 col-sm-4">
-								<div class="box-info box-service-1">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
 									<div class="box-icon">
-										<i class="far fa-lightbulb"></i>
+										<i class="fa fa-address-card"></i>
 									</div>
 									<!-- .box-icon end -->
 									<div class="box-content">
 										<h5>
 											<a href="javascript:;"
-												>Strategy & Planning</a
+												>Access to Expert Guidance</a
 											>
 										</h5>
 										<p>
-											Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Sint
-											ipsa voluptatibus.
+											Our solution connects businesses
+											with experienced Financial Advisors
+											and Mentors who provide invaluable
+											guidance.
 										</p>
 									</div>
 									<!-- .box-content end -->
@@ -252,21 +358,28 @@
 							</div>
 							<!-- .col-md-3 -->
 							<div class="col-md-3 col-sm-4">
-								<div class="box-info box-service-1 mt-sm-40">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
 									<div class="box-icon">
-										<i class="fas fa-chart-line"></i>
+										<i class="fa fa-sitemap"></i>
 									</div>
 									<!-- .box-icon end -->
 									<div class="box-content">
 										<h5>
 											<a href="javascript:;"
-												>Fast Development</a
+												>Access to Government Schemes
+												and Funding Sources</a
 											>
 										</h5>
 										<p>
-											Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Sint
-											ipsa voluptatibus.
+											We provide links and information
+											about government schemes, such as
+											iStart and other funding programs.
 										</p>
 									</div>
 									<!-- .box-content end -->
@@ -275,21 +388,190 @@
 							</div>
 							<!-- .col-md-3 -->
 							<div class="col-md-3 col-sm-4">
-								<div class="box-info box-service-1 mt-sm-40">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
 									<div class="box-icon">
-										<i class="fas fa-check"></i>
+										<i class="fa fa-inr"></i>
 									</div>
 									<!-- .box-icon end -->
 									<div class="box-content">
 										<h5>
 											<a href="javascript:;"
-												>Product Launch</a
+												>Platform for Investment
+												Opportunities</a
 											>
 										</h5>
 										<p>
-											Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Sint
-											ipsa voluptatibus.
+											Our mobile app, “UNNATI”, serves as
+											a centralized platform for
+											showcasing these meticulously
+											crafted pitches.
+										</p>
+									</div>
+									<!-- .box-content end -->
+								</div>
+								<!-- .box-info box-service-1 end -->
+							</div>
+							<!-- .col-md-3 -->
+							<div class="col-md-3 col-sm-4">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
+									<div class="box-icon">
+										<i class="fa fa-money"></i>
+									</div>
+									<!-- .box-icon end -->
+									<div class="box-content">
+										<h5>
+											<a href="javascript:;"
+												>Empowering Investors</a
+											>
+										</h5>
+										<p>
+											“UNNATI” empowers investors by
+											providing them with a wide array of
+											investment options.
+										</p>
+									</div>
+									<!-- .box-content end -->
+								</div>
+								<!-- .box-info box-service-1 end -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-sm-4">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
+									<div class="box-icon">
+										<i class="fa fa-bullhorn"></i>
+									</div>
+									<!-- .box-icon end -->
+									<div class="box-content">
+										<h5>
+											<a href="javascript:;"
+												>Customized Business Pitches</a
+											>
+										</h5>
+										<p>
+											Through the collaboration with
+											Financial Advisors and Mentors,
+											businesses can tailor their pitches
+											to effectively communicate their
+											value propositions and growth
+											potential to potential investors.
+										</p>
+									</div>
+									<!-- .box-content end -->
+								</div>
+								<!-- .box-info box-service-1 end -->
+							</div>
+							<!-- .col-md-3 -->
+							<div class="col-md-3 col-sm-4">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
+									<div class="box-icon">
+										<i class="fa fa-book"></i>
+									</div>
+									<!-- .box-icon end -->
+									<div class="box-content">
+										<h5>
+											<a href="javascript:;"
+												>Educational Resources</a
+											>
+										</h5>
+										<p>
+											In addition to connecting businesses
+											and investors, our platform offers
+											educational resources and webinars
+											to help aspiring entrepreneurs and
+											investors enhance their knowledge
+											and skills, thereby increasing their
+											chances of success.
+										</p>
+									</div>
+									<!-- .box-content end -->
+								</div>
+								<!-- .box-info box-service-1 end -->
+							</div>
+							<!-- .col-md-3 -->
+							<div class="col-md-3 col-sm-4">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
+									<div class="box-icon">
+										<i class="fa fa-support"></i>
+									</div>
+									<!-- .box-icon end -->
+									<div class="box-content">
+										<h5>
+											<a href="javascript:;"
+												>Monitoring and Support</a
+											>
+										</h5>
+										<p>
+											We provide ongoing support for
+											businesses and investors alike,
+											including progress tracking and
+											expert advice, to ensure that
+											investments are successful and
+											businesses thrive over the long
+											term.
+										</p>
+									</div>
+									<!-- .box-content end -->
+								</div>
+								<!-- .box-info box-service-1 end -->
+							</div>
+							<!-- .col-md-3 -->
+							<div class="col-md-3 col-sm-4">
+								<div
+									class="box-info box-service-1 mt-sm-40"
+									style="
+										align-items: center;
+										text-align: center;
+									"
+								>
+									<div class="box-icon">
+										<i class="fa fa-recycle"></i>
+									</div>
+									<!-- .box-icon end -->
+									<div class="box-content">
+										<h5>
+											<a href="javascript:;"
+												>Promoting Economic Recovery and
+												Innovation</a
+											>
+										</h5>
+										<p>
+											By facilitating investments in
+											businesses, our solution not only
+											aids in economic recovery for
+											struggling enterprises but also
+											nurtures innovation and
+											entrepreneurship.
 										</p>
 									</div>
 									<!-- .box-content end -->
@@ -321,30 +603,24 @@
 										Your Startup Business
 									</h2>
 									<p class="description">
-										This should be used to tell a story and
-										let your users know a little more about
-										your product or service. How can you
-										benefit them?
+										Here are some tips on how to boost the
+										growth of your startup business.
 									</p>
 								</div>
 								<!-- .section-title end -->
 								<ul class="list-info arrow-right">
+									<li>Have a clear vision and mission.</li>
+									<li>Build a strong team.</li>
 									<li>
-										Donec nec justo eget felis facilisis
-										fermentum.
+										Develop a strong product or service.
 									</li>
-									<li>
-										Aliquam porttitor mauris sit amet orci.
-									</li>
-									<li>
-										Integer vitae libero ac risus egestas
-										placerat.
-									</li>
+									<li>Provide excellent customer service.</li>
+									<li>Market your business effectively.</li>
 								</ul>
 								<!-- .list-info.arrow-right end -->
 								<a
 									class="btn colorful large hover-dark rounded mt-20 move-top"
-									href="#"
+									onclick="openContactForm()"
 									>Get Quote</a
 								>
 							</div>
@@ -377,29 +653,26 @@
 										Business or Company
 									</h2>
 									<p class="description">
-										This should be used to tell a story and
-										let your users know a little more about
-										your product or service. How can you
-										benefit them?
+										Our goal is to help businesses and
+										entrepreneurs succeed. We do this by
+										providing them with the tools and
+										resources they need to grow and thrive.
 									</p>
 								</div>
 								<!-- .section-title end -->
 								<ul class="list-info arrow-right">
 									<li>
-										Donec nec justo eget felis facilisis
-										fermentum.
+										Network with other entrepreneurs and
+										business leaders.
 									</li>
-									<li>
-										Aliquam porttitor mauris sit amet orci.
-									</li>
-									<li>
-										Aenean dignissim pellentesque felis.
-									</li>
+									<li>Focus on a niche market.</li>
+									<li>Be agile and adaptable.</li>
+									<li>Don't be afraid to fail.</li>
 								</ul>
 								<!-- .list-info.arrow-right end -->
 								<a
 									class="btn colorful large hover-dark rounded mt-20 move-top"
-									href="#"
+									onclick="openContactForm()"
 									>Get Quote</a
 								>
 							</div>
@@ -437,19 +710,24 @@
 											>Some Facts of Our</span
 										>
 										<br />
-										Achievements Numbers
+										Achievements
 									</h2>
 									<p class="description">
-										This should be used to tell a story and
-										let your users know a little more about
-										your product or service. How can you
-										benefit them?
+										Our solution not only provides access to
+										capital but also fosters an ecosystem of
+										innovation, skill development, and
+										employment generation. These factors
+										collectively contribute to India's
+										economic and financial development,
+										making it more robust, diverse, and
+										resilient in the face of global economic
+										challenges.
 									</p>
 								</div>
 								<!-- .section-title end -->
 								<a
 									class="btn large white hover-dark rounded mt-10 move-top"
-									href="#"
+									onclick="openContactForm()"
 									>Get Quote</a
 								>
 							</div>
@@ -467,7 +745,7 @@
 											<div class="box-content">
 												<h2>
 													<span class="counter-stats"
-														>1500</span
+														>30+</span
 													>
 												</h2>
 												<h5>Projects Completed</h5>
@@ -489,7 +767,7 @@
 											<div class="box-content">
 												<h2>
 													<span class="counter-stats"
-														>1420</span
+														>10+</span
 													>
 												</h2>
 												<h5>Happy Clients</h5>
@@ -509,7 +787,7 @@
 											<div class="box-content">
 												<h2>
 													<span class="counter-stats"
-														>1250</span
+														>400+</span
 													>
 												</h2>
 												<h5>Cups of Coffee</h5>
@@ -531,7 +809,7 @@
 											<div class="box-content">
 												<h2>
 													<span class="counter-stats"
-														>21600</span
+														>1000+</span
 													>
 												</h2>
 												<h5>Hours of Work</h5>
@@ -558,20 +836,21 @@
 				<div class="section-content">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="section-title">
-									<h2>
+									<h2 style="width: 100%; text-align: center">
 										<span class="heading-300"
 											>Did You Hear About Our</span
 										>
 										<br />
 										Customers Testimonials
 									</h2>
-									<p class="description">
-										This should be used to tell a story and
-										let your users know a little more about
-										your product or service. How can you
-										benefit them?
+									<p class="description" style="width: 100%; text-align: center">
+										Our approach not only drives economic
+										recovery but also fosters innovation and
+										entrepreneurship in India, paving the
+										way for a more vibrant and sustainable
+										business ecosystem.
 									</p>
 								</div>
 								<!-- .section-title end -->
@@ -894,7 +1173,9 @@
 												<ul>
 													<li>
 														<a
-															href="https://www.linkedin.com/in/vivekajee/" target="_blank"
+															rel="noopener"
+															href="https://www.linkedin.com/in/vivekajee/"
+															target="_blank"
 															><i
 																class="fab fa-linkedin-in"
 															></i
@@ -902,7 +1183,9 @@
 													</li>
 													<li>
 														<a
-															href="https://twitter.com/ImVivekaJee" target="_blank"
+															rel="noopener"
+															href="https://twitter.com/ImVivekaJee"
+															target="_blank"
 															><i
 																class="fab fa-twitter"
 															></i
@@ -910,7 +1193,9 @@
 													</li>
 													<li>
 														<a
-															href="https://www.instagram.com/Vivekajee/" target="_blank"
+															rel="noopener"
+															href="https://www.instagram.com/Vivekajee/"
+															target="_blank"
 															><i
 																class="fab fa-instagram"
 															></i
@@ -958,14 +1243,19 @@
 												<ul>
 													<li>
 														<a
-															href="https://www.linkedin.com/in/amitskr/" target="_blank"
+															rel="noopener"
+															href="https://www.linkedin.com/in/amitskr/"
+															target="_blank"
 															><i
 																class="fab fa-linkedin-in"
 															></i
 														></a>
 													</li>
 													<li>
-														<a href="https://twitter.com/ImVivekaJee" target="_blank"
+														<a
+															rel="noopener"
+															href="https://twitter.com/ImVivekaJee"
+															target="_blank"
 															><i
 																class="fab fa-twitter"
 															></i
@@ -973,7 +1263,9 @@
 													</li>
 													<li>
 														<a
-															href="https://www.instagram.com/real_warrrior_golu/" target="_blank"
+															rel="noopener"
+															href="https://www.instagram.com/real_warrrior_golu/"
+															target="_blank"
 															><i
 																class="fab fa-instagram"
 															></i
@@ -1021,7 +1313,9 @@
 												<ul>
 													<li>
 														<a
-															href="https://www.linkedin.com/in/swapnil-kashyap-b25624212/" target="_blank"
+															rel="noopener"
+															href="https://www.linkedin.com/in/swapnil-kashyap-b25624212/"
+															target="_blank"
 															><i
 																class="fab fa-linkedin-in"
 															></i
@@ -1083,7 +1377,9 @@
 												<ul>
 													<li>
 														<a
-															href="https://www.linkedin.com/in/radhika-rungta-b866a9200/" target="_blank"
+															rel="noopener"
+															href="https://www.linkedin.com/in/radhika-rungta-b866a9200/"
+															target="_blank"
 															><i
 																class="fab fa-linkedin-in"
 															></i
@@ -1155,23 +1451,23 @@
 												<ul>
 													<li>
 														<a
-															href="https://www.linkedin.com/in/sabhishek24/" target="_blank"
+															rel="noopener"
+															href="https://www.linkedin.com/in/sabhishek24/"
+															target="_blank"
 															><i
 																class="fab fa-linkedin-in"
 															></i
 														></a>
 													</li>
 													<li>
-														<a
-															href="https://mobile.twitter.com/sayhena_"
+														<a href="#"
 															><i
 																class="fab fa-twitter"
 															></i
 														></a>
 													</li>
 													<li>
-														<a
-															href="https://www.instagram.com/_sunidhi._.thakur/"
+														<a href="#"
 															><i
 																class="fab fa-instagram"
 															></i
@@ -1327,7 +1623,7 @@
 								</p>
 								<a
 									class="btn x-large colorful hover-dark rounded mt-20 move-top"
-									href="#"
+									onclick="openContactForm()"
 									>Get Quote</a
 								>
 							</div>
@@ -1415,6 +1711,99 @@
 		<a class="scroll-top-icon scroll-top" href="javascript:;"
 			><i class="fa fa-angle-up"></i
 		></a>
+
+		<script>
+			// Function to open the contact form
+			function openContactForm() {
+				document.getElementById("contactFormDiv").style.display =
+					"block";
+			}
+
+			// Function to close the contact form
+			function closeContactForm() {
+				document.getElementById("contactFormDiv").style.display =
+					"none";
+			}
+		</script>
+
+		<!-- <script src="js/google-sheet.js"></script> -->
+		<script>
+			const scriptURL =
+				"https://script.google.com/macros/s/AKfycby9hOqBqDNTO1tegFJ5f2cyf6BNT46g3uaO8nHYeBKxhI1GR5VK7v2TnR_4FlL6hnlG/exec";
+			const scriptURL2 =
+				"https://script.google.com/macros/s/AKfycbzJEH_SvMQHZePuM0H12a3SezCZY_b51iCL_-kGUhoUKwuFXBW5VCF8ASlX5zYGfMXP/exec";
+
+			const validateEmail = (email) => {
+				return String(email)
+					.toLowerCase()
+					.match(
+						/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+					);
+			};
+
+			const form = document.forms["contactForm"];
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+				const emailInput = document.getElementById("Email"); // Replace with your email input field ID
+				const emailValue = emailInput.value;
+
+				if (!validateEmail(emailValue)) {
+					alert("Please enter a valid email address.");
+					return;
+				}
+
+				fetch(scriptURL, {
+					method: "POST",
+					body: new FormData(form),
+				})
+					.then((response) => {
+						document.getElementById(
+							"contactFormDiv"
+						).style.display = "none";
+						alert(
+							"Thank you! your form is submitted successfully."
+						);
+					})
+					.then(() => {
+						form.reset();
+						document.getElementById(
+							"contactFormDiv"
+						).style.display = "none";
+					})
+					.catch((error) => {
+						document.getElementById(
+							"contactFormDiv"
+						).style.display = "none";
+						console.error("Error!", error.message);
+					});
+			});
+
+			const form2 = document.forms["contactForm2"];
+			form2.addEventListener("submit", (e) => {
+				e.preventDefault();
+				const emailInput = document.getElementById("subscribedEmail"); // Replace with your email input field ID
+				const emailValue = emailInput.value;
+
+				if (!validateEmail(emailValue)) {
+					alert("Please enter a valid email address.");
+					return;
+				}
+
+				fetch(scriptURL, {
+					method: "POST",
+					body: new FormData(form2),
+				})
+					.then((response) => {
+						alert("Thank you! you have subscribed successfully.");
+					})
+					.then(() => {
+						form2.reset();
+					})
+					.catch((error) => {
+						console.error("Error!", error.message);
+					});
+			});
+		</script>
 
 		<!-- External JavaScripts
 	============================================= -->
